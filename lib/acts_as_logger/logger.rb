@@ -11,7 +11,7 @@ module ActsAsLogger
         class_eval do
           before_save :created_or_updated_by
           embeds_many :logs, :class_name => "ActsAsLogger::Log" 
-          attr_accessor :created_by, :updated_by
+          #attr_accessor :created_by, :updated_by
         end
         
         Log.class_eval do
@@ -48,6 +48,24 @@ module ActsAsLogger
           end
         end
       end
+      
+      def created_by=(user)
+        raise "created by is not null" unless self.logs.where(:action => :create).empty?
+        self.logs << ActsAsLogger::Log.new(:action => :create, :user => user)
+      end
+      
+      def created_by
+        self.logs.where(:action => :create).first
+      end
+      
+      def updated_by=(user)
+        self.logs << ActsAsLogger::Log.new(:action => :update, :user => User.last)
+      end
+      
+      def updated_by
+        self.logs.where(:action => :update).desc(:created_at).first
+      end
+      
     end
 
   end
