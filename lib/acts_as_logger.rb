@@ -1,0 +1,2 @@
+module ActsAsLogger
+end
