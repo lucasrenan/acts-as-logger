@@ -12,6 +12,7 @@ gem "redgreen", :platforms => :ruby_18
 gem "ruby-debug", :platforms => :ruby_18
 gem "rcov"
 gem "launchy"
+gem "factory_girl_rails", "1.0"
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'

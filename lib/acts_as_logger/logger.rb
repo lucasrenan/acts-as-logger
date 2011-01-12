@@ -16,7 +16,9 @@ module ActsAsLogger
         
         Log.class_eval do
           embedded_in self.to_s.downcase.to_sym, :inverse_of => :logs
+          
           #FIXME - model fixo
+          #nao está salvando o usuario dentro do log, provavelmente um problema relacionado a :stored_as
           references_one :user
         end
         
@@ -59,7 +61,7 @@ module ActsAsLogger
       end
       
       def updated_by=(user)
-        self.logs << ActsAsLogger::Log.new(:action => :update, :user => User.last)
+        self.logs << ActsAsLogger::Log.new(:action => :update, :user => user)
       end
       
       def updated_by
