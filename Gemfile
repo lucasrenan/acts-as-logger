@@ -8,6 +8,11 @@ gem "mongoid", "2.0.0.rc.1"
 gem "bson_ext", "1.1.5"
 gem "devise", "1.1.5"
 
+gem "redgreen", :platforms => :ruby_18
+gem "ruby-debug", :platforms => :ruby_18
+gem "rcov"
+gem "launchy"
+
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
 # gem 'ruby-debug19'
