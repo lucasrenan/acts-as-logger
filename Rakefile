@@ -33,6 +33,7 @@ end
 #FIXME Rake test não funciona se implementar rcov
 #FIXME rake rcov path está com problemas
 
+
 # task :rcov => "rcov:plain"
 # 
 # rcov_command = "bundle exec rcov -I *_test.rb **/*_test.rb --rails -x '.gem|case|helper'"
