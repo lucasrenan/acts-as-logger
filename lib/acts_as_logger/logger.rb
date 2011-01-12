@@ -1,8 +1,6 @@
 module ActsAsLogger
   module Logger
-    def self.included(base)
-      base.extend(ClassMethods)
-    end
+    extend ActiveSupport::Concern
     
     module ClassMethods
       def acts_as_logger(options={})

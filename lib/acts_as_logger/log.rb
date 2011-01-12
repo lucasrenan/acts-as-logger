@@ -1,3 +1,5 @@
+require 'mongoid'
+
 module ActsAsLogger
   class Log
     include Mongoid::Document

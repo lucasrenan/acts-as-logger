@@ -5,7 +5,7 @@ require "acts_as_logger/log"
 class ApplicationController < ActionController::Base
   before_filter :set_current_user
 
-  private
+ private
   def set_current_user
     User.current = current_user
   end

@@ -1,3 +1,11 @@
+PATH
+  remote: .
+  specs:
+    acts_as_logger (0.0.1)
+      activesupport (~> 3.0.3)
+      bson_ext (= 1.1.5)
+      mongoid (= 2.0.0.rc.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -69,7 +77,7 @@ GEM
     mime-types (1.16)
     mongo (1.1.5)
       bson (>= 1.1.5)
-    mongoid (2.0.0.rc.1)
+    mongoid (2.0.0.rc.2)
       activemodel (~> 3.0)
       mongo (~> 1.1.5)
       tzinfo (~> 0.3.22)
@@ -122,11 +130,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (~> 3.0.3)
+  acts_as_logger!
   bson_ext (= 1.1.5)
   capybara (>= 0.4.0)
   devise (= 1.1.5)
   launchy
-  mongoid (= 2.0.0.rc.1)
+  mongoid (= 2.0.0.rc.2)
   rails (= 3.0.3)
   rcov
   redgreen
