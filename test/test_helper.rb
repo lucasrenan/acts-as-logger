@@ -20,3 +20,16 @@ Capybara.default_selector = :css
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+
+
+####
+Dir["#{File.dirname(__FILE__)}/factories/*.rb"].each { |f| require f }
+
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+  
+  teardown do
+    Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
+  end
+end
