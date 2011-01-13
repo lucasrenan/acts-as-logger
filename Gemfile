@@ -6,7 +6,7 @@ gem "capybara", ">= 0.4.0"
 
 gem "devise", "1.1.5"
 
-gem "redgreen", :platforms => :ruby_18
+gem "redgreen",   :platforms => :ruby_18
 gem "ruby-debug", :platforms => :ruby_18
 gem "rcov"
 gem "launchy"
