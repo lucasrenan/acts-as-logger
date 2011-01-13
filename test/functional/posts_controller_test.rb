@@ -2,6 +2,7 @@ require "test_helper"
 
 class PostsControllerTest < ActionController::TestCase
   setup do
+    ActsAsLogger::User.current = Factory.create(:user)
     @post = Factory.create(:post)
   end
   
