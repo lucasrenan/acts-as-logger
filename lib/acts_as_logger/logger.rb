@@ -8,7 +8,7 @@ module ActsAsLogger
         
         class_eval do
           before_save :created_or_updated_by
-          embeds_many :logs, :class_name => "ActsAsLogger::Log" 
+          embeds_many :logs, :class_name => "ActsAsLogger::Log"
           #attr_accessor :created_by, :updated_by
         end
         
@@ -16,13 +16,12 @@ module ActsAsLogger
           embedded_in self.to_s.downcase.to_sym, :inverse_of => :logs
           
           #FIXME - model fixo
-          #nao está salvando o usuario dentro do log, provavelmente um problema relacionado a :stored_as
-          references_one :user
+          referenced_in :user #, :store_as => :array
         end
         
         #FIXME - model fixo
         User.class_eval do
-          referenced_in :log, :class_name => "ActsAsLogger::Log"
+          references_many :logs, :class_name => "ActsAsLogger::Log"
           
           def self.current
             Thread.current[:user]
