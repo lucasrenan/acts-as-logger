@@ -14,8 +14,6 @@ module ActsAsLogger
         end
         
         Log.class_eval do
-          embedded_in self.to_s.downcase.to_sym, :inverse_of => :logs
-
           #FIXME - model user fixo
           referenced_in :user, :inverse_of => :logs
         end
@@ -24,7 +22,7 @@ module ActsAsLogger
         # User.class_eval do
         #   #references_many :logs, :class_name => "ActsAsLogger::Log", :inverse_of => :users  
         # end
-        
+
       end
     end
     
@@ -60,7 +58,7 @@ module ActsAsLogger
       #FIXME - model user fixo
       def updated_by
         if self.logs.where(:action => :update).count > 0
-          self.logs.where(:action => :update).desc(:created_at).first.user
+          self.logs.where(:action => :update).desc(:created_at).limit(1).first.user
         end
       end
       

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+	<b>Created by:</b>
+	<%= @product.created_by.email %>
+</p>
+
+<%- if @product.updated_by %>
+	<p>
+		<b>Updated by:</b>
+		<%= @product.updated_by.email %>
+	</p>
+<%- end %>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
