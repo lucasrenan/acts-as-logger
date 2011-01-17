@@ -10,7 +10,7 @@ require 'rake'
 require 'rake/rdoctask'
 
 require 'rake/testtask'
-require 'launchy'
+require 'rcov/rcovtask'
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
@@ -29,24 +29,12 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-
-#FIXME Rake test não funciona se implementar rcov
-#FIXME rake rcov path está com problemas
-
-task :rcov => "rcov:plain"
-
-rcov_command = "bundle exec rcov -I *_test.rb **/*_test.rb --rails -x '.gem|case|helper'"
-
-namespace :rcov do
-  #FIXME Tenho que entrar na pasta test senão não consigo rodar o rcov
-  FileUtils.cd('test')
-
-  task :plain do
-    system "#{rcov_command} --no-html -T"
-  end
-
-  task :web do
-    system "#{rcov_command} -o dummy/public/coverage"
-    Launchy.open("http://localhost:3000/coverage/index.html")
-  end
+Rcov::RcovTask.new(:rcov) do |rcov|
+  rcov.libs
+  rcov.rcov_opts << '--rails'
+  rcov.rcov_opts << '-x .gem'
+  rcov.pattern    = 'test/**/*_test.rb'
+  rcov.output_dir = 'test/rcov'
+  rcov.verbose    = true
 end
+

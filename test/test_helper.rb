@@ -22,7 +22,7 @@ Capybara.default_selector = :css
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 
-####
+# Load factories
 Dir["#{File.dirname(__FILE__)}/factories/*.rb"].each { |f| require f }
 
 
